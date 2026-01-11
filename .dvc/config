@@ -1,0 +1,4 @@
+[core]
+    remote = local-central
+['remote "local-central"']
+    url = ../UsersNareshmlopsdvc-central-store
