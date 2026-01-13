@@ -1,5 +1,5 @@
 preprocess:
-  to_uppercase: true
+  to_uppercase: false
 
 train:
   model_name: simple_text_model
