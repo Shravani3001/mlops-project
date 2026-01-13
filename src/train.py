@@ -1,5 +1,5 @@
 import os
-
+import yaml
 processed_path = "data/processed/processed.txt"
 model_path = "models/model.txt"
 metrics_path = "metrics.txt"
