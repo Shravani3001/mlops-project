@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/raw/demo.txt
       hash: md5
-      md5: 8b029c20da4ced8c7c3d614790a10cf8
-      size: 12
+      md5: 1ce42bfc37537593318b36315c962a34
+      size: 15
     - path: src/preprocess.py
       hash: md5
       md5: 2684feadd495624d7decdf3663ee977e
@@ -14,15 +14,15 @@ stages:
     outs:
     - path: data/processed/processed.txt
       hash: md5
-      md5: c2de9309755c3516aa5ea1b95b7244a3
-      size: 14
+      md5: c4ab0d5f7e786f46b8188674902c0c4a
+      size: 17
   train:
     cmd: python src/train.py
     deps:
     - path: data/processed/processed.txt
       hash: md5
-      md5: c2de9309755c3516aa5ea1b95b7244a3
-      size: 14
+      md5: c4ab0d5f7e786f46b8188674902c0c4a
+      size: 17
     - path: src/train.py
       hash: md5
       md5: 508bae3a5d773171a6a8847132b12cdd
@@ -30,9 +30,9 @@ stages:
     outs:
     - path: metrics.txt
       hash: md5
-      md5: 3ef3cdd9a3dca9805025c82fad164a39
+      md5: 7b6813cd6422419b619d97e5c1030cfa
       size: 17
     - path: models/model.txt
       hash: md5
-      md5: 9d6745dfed7015d121c67cbc5230b72d
-      size: 38
+      md5: cd6c9d20a000479fdac0d392410c52c3
+      size: 41

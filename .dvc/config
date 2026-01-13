@@ -1,4 +1,5 @@
 [core]
     remote = localcentral
+    autostage = true
 ['remote "localcentral"']
     url = C:/Users/Naresh/mlops-project/dvc-central-store
