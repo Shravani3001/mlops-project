@@ -5,7 +5,7 @@ import yaml
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Load params.yaml
-params_path = os.path.join(BASE_DIR, "params.yml")
+params_path = os.path.join(BASE_DIR, "params.yaml")
 params = yaml.safe_load(open(params_path))
 
 raw_path = os.path.join(BASE_DIR, "data", "raw", "demo.txt")
