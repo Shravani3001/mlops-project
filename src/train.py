@@ -1,23 +1,21 @@
 import os
 
-# Get project root (one level above src/)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+processed_path = "data/processed/processed.txt"
+model_path = "models/model.txt"
+metrics_path = "metrics.txt"
 
-processed_path = os.path.join(BASE_DIR, "data", "processed", "processed.txt")
-model_path = os.path.join(BASE_DIR, "models", "model.txt")
+os.makedirs("models", exist_ok=True)
 
-# Ensure models directory exists
-os.makedirs(os.path.dirname(model_path), exist_ok=True)
-
-# Read processed data
 with open(processed_path, "r") as f:
     data = f.read()
 
-# Simulate training
 model_output = "Model trained on data:\n" + data
 
-# Save model
 with open(model_path, "w") as f:
     f.write(model_output)
+
+# Simple metric
+with open(metrics_path, "w") as f:
+    f.write(f"data_length: {len(data)}\n")
 
 print("Training completed")
