@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.10-slim'
-            args '-u root'
-        }
-    }
+    agent any
 
     stages {
 
@@ -15,29 +10,29 @@ pipeline {
             }
         }
 
-        stage('Verify Environment') {
+        stage('Ensure Python Installed') {
             steps {
                 sh '''
-                python --version
-                pip --version
+                if ! command -v python3 >/dev/null 2>&1; then
+                    echo "Python not found. Installing..."
+                    sudo apt-get update
+                    sudo apt-get install -y python3 python3-venv python3-pip
+                else
+                    echo "Python already installed"
+                fi
+
+                python3 --version
                 '''
             }
         }
 
-        stage('Setup Virtual Environment') {
+        stage('Setup Environment') {
             steps {
                 sh '''
-                python -m venv venv
+                python3 -m venv venv
                 . venv/bin/activate
+
                 pip install --upgrade pip
-                '''
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh '''
-                . venv/bin/activate
                 pip install -r requirements.txt
                 pip install dvc
                 '''
@@ -53,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Run DVC Pipeline') {
+        stage('Run Pipeline') {
             steps {
                 sh '''
                 . venv/bin/activate
@@ -83,10 +78,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ End-to-end MLOps pipeline completed successfully"
+            echo '✅ MLOps pipeline completed successfully'
         }
         failure {
-            echo "❌ MLOps pipeline failed"
+            echo '❌ MLOps pipeline failed'
         }
     }
 }
