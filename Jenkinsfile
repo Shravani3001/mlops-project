@@ -8,7 +8,7 @@ pipeline {
 
             steps {
 
-                git branch: 'mainr',
+                git branch: 'main',
 
                     url: 'https://github.com/Shravani3001/mlops-project.git'
 
